@@ -8,6 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.aplication.protectora.Model.Users;
 
 public interface UsersRepository extends JpaRepository<Users, UUID>{
-    List<Users> findByuserName(String userName);
-    Optional<Users> findById(UUID uuid);
+
 }

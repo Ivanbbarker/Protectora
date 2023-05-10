@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -96,6 +96,7 @@ public class Users {
 
     @Column(name = "created_at")
     private LocalDateTime userCreatedAt;
+
 
     public Users() {
     }

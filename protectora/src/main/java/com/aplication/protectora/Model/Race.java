@@ -2,40 +2,43 @@ package com.aplication.protectora.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="race")
+@Table(name = "race")
 public class Race {
 
     @Id
-    @Column(name="id_Race")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_race")
+    private int idRace;
 
-    @Column(name="name")
+    @ManyToOne
+    @JoinColumn(name = "id_kingdom", nullable = false)
+    private Kingdom kingdom;
+
+    @Column(name = "name")
     private String raceName;
-
-    @Column(name="cross")
-    private Boolean raceCross;
-
 
     public Race() {
     }
 
-    public Race(int id, String raceName, Boolean raceCross) {
-        this.id = id;
+    public Race(int idRace, String raceName) {
+        this.idRace = idRace;
         this.raceName = raceName;
-        this.raceCross = raceCross;
     }
 
     public int getId() {
-        return this.id;
+        return this.idRace;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idRace) {
+        this.idRace = idRace;
     }
 
     public String getRaceName() {
@@ -46,20 +49,24 @@ public class Race {
         this.raceName = raceName;
     }
 
-    public Boolean isRaceCross() {
-        return this.raceCross;
+    public int getIdRace() {
+        return this.idRace;
     }
 
-    public Boolean getRaceCross() {
-        return this.raceCross;
+    public void setIdRace(int idRace) {
+        this.idRace = idRace;
     }
 
-    public void setRaceCross(Boolean raceCross) {
-        this.raceCross = raceCross;
+    public Kingdom getKingdom() {
+        return this.kingdom;
     }
 
-    public Race id(int id) {
-        setId(id);
+    public void setKingdom(Kingdom kingdom) {
+        this.kingdom = kingdom;
+    }
+
+    public Race id(int idRace) {
+        setId(idRace);
         return this;
     }
 
@@ -68,19 +75,12 @@ public class Race {
         return this;
     }
 
-    public Race raceCross(Boolean raceCross) {
-        setRaceCross(raceCross);
-        return this;
-    }
-
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", raceName='" + getRaceName() + "'" +
-            ", raceCross='" + isRaceCross() + "'" +
-            "}";
+                " ID Race='" + getId() + "'" +
+                ", Race Name='" + getRaceName() + "'" +
+                "}";
     }
-    
 
 }
