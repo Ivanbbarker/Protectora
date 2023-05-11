@@ -23,7 +23,7 @@ public class Animals {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int idAnimales;
+    private String idAnimales;
     
 
     @ManyToOne
@@ -55,7 +55,7 @@ public class Animals {
 
     @Component
     public class StringToLocalDateTimeConverter implements Converter<String, LocalDateTime> {
-    
+                            
         private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm";
     
         @Override
@@ -68,7 +68,7 @@ public class Animals {
     public Animals() {
     }
 
-    public Animals(int idAnimales, Kingdom kingdom, Race race, String animalName, double animalHeight, double animalWeight, String animalPathology, LocalDateTime animalDateOfEntry, LocalDateTime animalDepartureDate) {
+    public Animals(String idAnimales, Kingdom kingdom, Race race, String animalName, double animalHeight, double animalWeight, String animalPathology, LocalDateTime animalDateOfEntry, LocalDateTime animalDepartureDate) {
         this.idAnimales = idAnimales;
         this.kingdom = kingdom;
         this.race = race;
@@ -80,11 +80,11 @@ public class Animals {
         this.animalDepartureDate = animalDepartureDate;
     }
 
-    public int getIdAnimales() {
+    public String getIdAnimales() {
         return this.idAnimales;
     }
 
-    public void setIdAnimales(int idAnimales) {
+    public void setIdAnimales(String idAnimales) {
         this.idAnimales = idAnimales;
     }
 
@@ -152,7 +152,7 @@ public class Animals {
         this.animalDepartureDate = animalDepartureDate;
     }
 
-    public Animals idAnimales(int idAnimales) {
+    public Animals idAnimales(String idAnimales) {
         setIdAnimales(idAnimales);
         return this;
     }

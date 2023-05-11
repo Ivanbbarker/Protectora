@@ -39,7 +39,7 @@ public class RaceController {
         return new ResponseEntity<>(race, HttpStatus.OK);
     }
 
-    @GetMapping("/detalle/{id}")
+    @GetMapping("/details/{id}")
     public String verRaceDetalle(@PathVariable int id, Model model){
         Race race = raceService.findById(id);
         model.addAttribute("race", race);
@@ -61,19 +61,19 @@ public class RaceController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRace(@PathVariable int id){
         raceService.delete(id);
-        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     public RaceController(RaceService raceService){
         this.raceService = raceService;
     }
 
-    @GetMapping("/listado-race")
+    @GetMapping("/list-race")
     public String listarRace(Model model){
         List<Race> races = raceService.findAll();
         model.addAttribute("races", races);
         model.addAttribute("race", new Race());
-        return "/views/Races/listado-race";
+        return "/views/Races/list-race";
     }
 
 
