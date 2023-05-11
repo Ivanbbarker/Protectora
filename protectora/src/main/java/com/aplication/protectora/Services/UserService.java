@@ -27,7 +27,7 @@ public class UserService {
         if (user.isPresent()) {
             return user.get();
         } else {
-            throw new RuntimeException("Usuario no encontrado con id: "+ id);
+            throw new RuntimeException("User not found by ID: "+ id);
         }
     }
 

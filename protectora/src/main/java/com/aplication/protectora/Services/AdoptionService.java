@@ -33,6 +33,17 @@ public class AdoptionService {
         return adoptionRepository.save(adoption);
     }
 
+    public Adoption update(int id, Adoption adoptionDetails){
+        Adoption adoption = findById(id);
+        adoption.setAdoptionCity(adoptionDetails.getAdoptionCity());
+        adoption.setAdoptionConsent(adoptionDetails.getAdoptionConsent());
+        adoption.setAdoptionCountry(adoptionDetails.getAdoptionCountry());
+        adoption.setAdoptionPostalCode(adoptionDetails.getAdoptionPostalCode());
+        adoption.setAdoptionTax(adoptionDetails.getAdoptionTax());
+        adoption.setDateAdoption(adoptionDetails.getDateAdoption());
+        return adoptionRepository.save(adoption);
+    }
+
     public void delete(int id){
         Adoption adoption = findById(id);
         adoptionRepository.delete(adoption);
