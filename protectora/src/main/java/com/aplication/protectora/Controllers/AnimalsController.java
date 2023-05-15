@@ -62,12 +62,12 @@ public class AnimalsController {
         this.animalsService = animalsService;
     }
 
-    @GetMapping("/animals/animal-list")
+    @GetMapping("/list-animals")
     public String listarAnimals(Model model){
         List<Animals> animals = animalsService.findAll();
         model.addAttribute("animals", animals);
         model.addAttribute("animal", new Animals());
-        return "/views/Animals/animal-list";
+        return "/views/Animals/list-animals";
     }
 
 }
