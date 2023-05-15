@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Animales</title>
+</head>
+<body>
+<h1>Listado de Animales</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Raza</th>
+        <th>Tipo</th>
+        <!-- Agrega los campos restantes aquí -->
+        <th>Acciones</th>
+    </tr>
+    <tr th:each="animal : ${animales}">
+        <td th:text="${animal.id}"></td>
+        <td th:text="${animal.nombre}"></td>
+        <td th:text="${animal.raza}"></td>
+        <td th:text="${animal.tipo}"></td>
+        <!-- Agrega los campos restantes aquí -->
+        <td>
+            <a th:href="@{/animales/{id}(id=${animal.id})}">Editar</a>
+            <a th:href="@{/animales/{id}(id=${animal.id})}" th:method="delete">Eliminar</a>
+        </td>
+    </tr>
+</table>
+
+<h1>Crear/Editar Animal</h1>
+<form action="#" th:action="@{/animales}" th:object="${animal}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label for="nombre">Nombre:</label>
+    <input type="text" th:field="*{nombre}" id="nombre" required>
+    <!-- Repite este bloque para cada campo que necesites -->
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>
